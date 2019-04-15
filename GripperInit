@@ -1,0 +1,29 @@
+package RobotiqGripper;  
+import javax.inject.Inject;  
+import com.kuka.roboticsAPI.controllerModel.Controller;
+import robotiq.gripper.twoFingersF85.RobotiqGripper2F85; 
+import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
+
+public class GripperInit extends RoboticsAPIApplication {
+	@Inject  
+	private Controller MasterController;
+	private RobotiqGripper2F85 robotiqGripper; 
+	int widthGlass= 50;
+	int widthBottle= 60;  
+	@Override
+	public void initialize() {
+		MasterController = (Controller) getContext().getControllers().toArray()[0]; 
+		robotiqGripper= new RobotiqGripper2F85(MasterController); // The Gripper is activated automatically in the constructor
+	} 
+	@Override
+	public void run() {    
+		robotiqGripper.fullyOpen() ;
+		robotiqGripper.waitForfullyOpen();  
+		
+		robotiqGripper.fullyClose() ;
+		robotiqGripper.waitForfullyClosed() ; 
+
+		robotiqGripper.fullyOpen() ;
+		robotiqGripper.waitForfullyOpen(); 
+	} 
+}
