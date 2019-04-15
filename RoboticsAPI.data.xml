@@ -1,0 +1,5 @@
+<processDataContainer>
+        <processData dataType="java.lang.Integer" defaultValue="25" displayName="GripperStep" id="gripperStep" max="50" min="5" value="25"/>
+        <processData dataType="java.lang.Integer" defaultValue="128" displayName="GripperSpeed" id="gripperSpeed" max="255" min="5" value="128"/>
+        <processData dataType="java.lang.Integer" defaultValue="30" displayName="GripperForce" id="gripperForce" max="255" min="1" value="35"/>       
+</processDataContainer>
