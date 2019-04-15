@@ -1,7 +1,7 @@
 # RobotiqGripper2F85EtherCat
 Controlling the Robotiq 2-Finger Gripper 2F85 with Kuka LBR IIWA Via Java Program OR the SmartPad userKeys.
 
-Steps:
+Steps:<br/>
 1 - Create an IOConfiguration.wvs file on sunrise then openit with WorkVisual.
 2 - Add the robotiq Gripper's EtherCat description File "Robotiq_AG_ECS_20181109.xml" or download it from:
 https://s3.amazonaws.com/com-robotiq-website-prod-assets/website-assets/support_documents/document/Robotiq_AG_ECS_20181109.xml
