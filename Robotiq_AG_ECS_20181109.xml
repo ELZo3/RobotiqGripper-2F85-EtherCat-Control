@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<EtherCATInfo Version="1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EtherCATInfo.xsd">
+	<Vendor>
+		<Id>#x0000FFFF</Id>
+		<Name>Robotiq Inc</Name>
+		<ImageData16x14>424d9e0200000000000036000000280000000e0000000e000000010018000000000068020000c40e0000c40e00000000000000000000fffffffffffffdfcf8fbf6ebfdfbf7fefdfbfefefeffffffffffffffffffffffffffffffffffffffffff0000ffffffffffffefcb88d98300de8f00e19b00e5af25edc362f2d69afbf5e6ffffffffffffffffffffffff0000fffffffffffff4deaae09900e3a400e3a200e19f00e19900df9600f1d386ffffffffffffffffffffffff0000fffffffffffff7e6bbe3a507e3a200e3a200e29e00e19900e19e11fbf4e3ffffffffffffffffffffffff0000fffffffffffffbf1dbe5a92add8e00e3a509e8b83fefca76f7e5ccfffffffdf7ecfcf6e7fffeffffffff0000fffffffffffffefefcfaf0def9ebcff8eac9f1d489ecc35be9b539e5a92ee5a821e0990ef9ebd5ffffff0000ffffffffffffffffffffffffffffffe8b636e19b00e2a000e1a000e3a000e3a000df9500f9edccffffff0000fffffffffffffffffffffffffffffff0d081e09b00e3a000e3a200e3a300e19e00e8b234fdf6e6ffffff0000fffffffffffffffffffffffffffffffbf2dde6ad41e6ae34e5aa22e3a50edf9600eec976fffefcffffff0000fffffffffffffffffffffffef1d191efca7af6e3bdf5dfaef3d793f0cf7aecc059f8ebcdffffffffffff0000ffffffffffffffffffffffffe7b043de9300e09700e09b00e6ab1ae8b643f1d18bfdf9efffffffffffff0000ffffffffffffffffffffffffecc059e19e00e4a500e3a400e3a200e09800e8b33ffbf5e5ffffffffffff0000fffffffffffffffffffffffff1d07ee19f00e29f00e09b00df9500dc8b00edc46effffffffffffffffff0000fffffffffffffffffffffffff9edd1e3a215e6af28f0cb73f5e0b0fbf4e8ffffffffffffffffffffffff0000</ImageData16x14>
+	</Vendor>
+	<Descriptions>
+		<Groups>
+			<Group>
+				<Type>netX</Type>
+				<Name LcId="1033">netX</Name>
+				<ImageData16x14>424d9e0200000000000036000000280000000e0000000e000000010018000000000068020000c40e0000c40e00000000000000000000fffffffffffffdfcf8fbf6ebfdfbf7fefdfbfefefeffffffffffffffffffffffffffffffffffffffffff0000ffffffffffffefcb88d98300de8f00e19b00e5af25edc362f2d69afbf5e6ffffffffffffffffffffffff0000fffffffffffff4deaae09900e3a400e3a200e19f00e19900df9600f1d386ffffffffffffffffffffffff0000fffffffffffff7e6bbe3a507e3a200e3a200e29e00e19900e19e11fbf4e3ffffffffffffffffffffffff0000fffffffffffffbf1dbe5a92add8e00e3a509e8b83fefca76f7e5ccfffffffdf7ecfcf6e7fffeffffffff0000fffffffffffffefefcfaf0def9ebcff8eac9f1d489ecc35be9b539e5a92ee5a821e0990ef9ebd5ffffff0000ffffffffffffffffffffffffffffffe8b636e19b00e2a000e1a000e3a000e3a000df9500f9edccffffff0000fffffffffffffffffffffffffffffff0d081e09b00e3a000e3a200e3a300e19e00e8b234fdf6e6ffffff0000fffffffffffffffffffffffffffffffbf2dde6ad41e6ae34e5aa22e3a50edf9600eec976fffefcffffff0000fffffffffffffffffffffffef1d191efca7af6e3bdf5dfaef3d793f0cf7aecc059f8ebcdffffffffffff0000ffffffffffffffffffffffffe7b043de9300e09700e09b00e6ab1ae8b643f1d18bfdf9efffffffffffff0000ffffffffffffffffffffffffecc059e19e00e4a500e3a400e3a200e09800e8b33ffbf5e5ffffffffffff0000fffffffffffffffffffffffff1d07ee19f00e29f00e09b00df9500dc8b00edc46effffffffffffffffff0000fffffffffffffffffffffffff9edd1e3a215e6af28f0cb73f5e0b0fbf4e8ffffffffffffffffffffffff0000</ImageData16x14>
+			</Group>
+		</Groups>
+		<Devices>
+			<Device Physics="YY">
+				<Type ProductCode="#x0000000B" RevisionNo="#x00000000">AG-ECS-3</Type>
+				<Name LcId="1033"><![CDATA[NIC 50-RE/ECS]]></Name>
+				<URL><![CDATA[http://www.hilscher.com/netx_boards.html]]></URL>
+				<GroupType>netX</GroupType>
+				<Fmmu>Outputs</Fmmu>
+				<Fmmu>Inputs</Fmmu>
+				<Fmmu>MBoxState</Fmmu>
+				<Sm MinSize="128" MaxSize="128" DefaultSize="128" StartAddress="#x1000" ControlByte="#x36" Enable="1">MBoxOut</Sm>
+				<Sm MinSize="128" MaxSize="128" DefaultSize="128" StartAddress="#x1080" ControlByte="#x32" Enable="1">MBoxIn</Sm>
+				<Sm MinSize="0" MaxSize="16" DefaultSize="16" StartAddress="#x1100" ControlByte="#x74" Enable="1">Outputs</Sm>
+				<Sm MinSize="0" MaxSize="16" DefaultSize="16" StartAddress="#x1D00" ControlByte="#x30" Enable="1">Inputs</Sm>
+        <RxPdo Sm="2">
+          <Index>#x1600</Index>
+          <Name>Outputs0</Name>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>1</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (0)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>2</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (1)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>3</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (2)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>4</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (3)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>5</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (4)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>6</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (5)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>7</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (6)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>8</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (7)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>9</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (8)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>10</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (9)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>11</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (10)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>12</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (11)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>13</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (12)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>14</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (13)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>15</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (14)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>16</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (15)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+        </RxPdo>
+        <TxPdo Sm="3">
+          <Index>#x1A00</Index>
+          <Name>Inputs0</Name>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>1</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (0)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>2</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (1)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>3</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (2)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>4</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (3)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>5</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (4)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>6</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (5)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>7</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (6)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>8</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (7)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>9</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (8)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>10</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (9)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>11</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (10)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>12</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (11)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>13</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (12)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>14</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (13)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>15</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (14)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>16</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (15)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+        </TxPdo>
+				<Mailbox>
+					<CoE SdoInfo="1" PdoUpload="1"/>
+				</Mailbox>
+				<Eeprom>
+					<ByteSize>32</ByteSize>
+          <ConfigData>060001EEE8030000</ConfigData>
+        </Eeprom>
+				<ImageData16x14>424d9e0200000000000036000000280000000e0000000e000000010018000000000068020000c40e0000c40e00000000000000000000fffffffffffffdfcf8fbf6ebfdfbf7fefdfbfefefeffffffffffffffffffffffffffffffffffffffffff0000ffffffffffffefcb88d98300de8f00e19b00e5af25edc362f2d69afbf5e6ffffffffffffffffffffffff0000fffffffffffff4deaae09900e3a400e3a200e19f00e19900df9600f1d386ffffffffffffffffffffffff0000fffffffffffff7e6bbe3a507e3a200e3a200e29e00e19900e19e11fbf4e3ffffffffffffffffffffffff0000fffffffffffffbf1dbe5a92add8e00e3a509e8b83fefca76f7e5ccfffffffdf7ecfcf6e7fffeffffffff0000fffffffffffffefefcfaf0def9ebcff8eac9f1d489ecc35be9b539e5a92ee5a821e0990ef9ebd5ffffff0000ffffffffffffffffffffffffffffffe8b636e19b00e2a000e1a000e3a000e3a000df9500f9edccffffff0000fffffffffffffffffffffffffffffff0d081e09b00e3a000e3a200e3a300e19e00e8b234fdf6e6ffffff0000fffffffffffffffffffffffffffffffbf2dde6ad41e6ae34e5aa22e3a50edf9600eec976fffefcffffff0000fffffffffffffffffffffffef1d191efca7af6e3bdf5dfaef3d793f0cf7aecc059f8ebcdffffffffffff0000ffffffffffffffffffffffffe7b043de9300e09700e09b00e6ab1ae8b643f1d18bfdf9efffffffffffff0000ffffffffffffffffffffffffecc059e19e00e4a500e3a400e3a200e09800e8b33ffbf5e5ffffffffffff0000fffffffffffffffffffffffff1d07ee19f00e29f00e09b00df9500dc8b00edc46effffffffffffffffff0000fffffffffffffffffffffffff9edd1e3a215e6af28f0cb73f5e0b0fbf4e8ffffffffffffffffffffffff0000</ImageData16x14>
+			</Device>
+		</Devices>
+	</Descriptions>
+</EtherCATInfo>
