@@ -9,25 +9,22 @@ import com.kuka.roboticsAPI.uiModel.userKeys.UserKeyEvent;
 import com.kuka.roboticsAPI.uiModel.userKeys.IUserKeyListener;
 import com.kuka.roboticsAPI.uiModel.userKeys.UserKeyAlignment; 
 import com.kuka.roboticsAPI.applicationModel.tasks.CycleBehavior;
-import com.kuka.roboticsAPI.applicationModel.tasks.RoboticsAPICyclicBackgroundTask; 
-
+import com.kuka.roboticsAPI.applicationModel.tasks.RoboticsAPICyclicBackgroundTask;  
 
 public class RobotiqGripperKeys extends RoboticsAPICyclicBackgroundTask {
 	@Inject
 	private Controller controller; 
 	private RobotiqGripper2F85 robotiqGripper ; 
 	String displayStr1="N";
-	String displayStr2="N";
-	String str;
+	String displayStr2="N"; 
 	IUserKey gripperDoubleKey;
-	IUserKey acknowledgeDoubleKey ; 
+	IUserKey releaseDoubleKey ; 
 	// Gripper variables
 	private int positionRequestEcho = 4; 
 	private int positionRequest = 4;  
 	private int step = 10;
 	private int speed = 128;
-	private int force = 35;
-
+	private int force = 35; 
 	private  static final int maxVal = 227;
 	private  static final int minVal = 4;
 	// *********************************************************************************************************
@@ -55,39 +52,30 @@ public class RobotiqGripperKeys extends RoboticsAPICyclicBackgroundTask {
 				// ==================================================================
 				//  =======  First button to close Gripper ========================
 				if(event == UserKeyEvent.FirstKeyDown){ 
-					// ********
-					// Value 0 For Open 255 for Fully Closed  
-
+					// ************************
+					// Value 0 For Open 255 for Fully Closed   
 					getGripperProcessData(); 
-					positionRequestEcho =  robotiqGripper.getPositionRequestEcho()- step; 
-
+					positionRequestEcho =  robotiqGripper.getPositionRequestEcho()- step;  
 					if (positionRequestEcho<minVal) 
 						positionRequest = minVal; 
 					else   
 						if (positionRequestEcho > maxVal)  
-							positionRequest = maxVal;
+								positionRequest = maxVal;
 						else  
-							positionRequest = positionRequestEcho;  
+								positionRequest = positionRequestEcho;  
 					robotiqGripper.moveToHex(positionRequest,speed,force); 
-					robotiqGripper.waitForMoveEnd();
-					//robotiqGripper.waitForObjectDetected();  
-					// ********
-
+					robotiqGripper.waitForMoveEnd(); 
+					// ************************ 
 					displayStr1 = robotiqGripper.getPosition().toString(); 
-					key.setText(UserKeyAlignment.Middle, displayStr1);
-
-
-
+					key.setText(UserKeyAlignment.Middle, displayStr1); 
 				}
 				// ================================================================
 				// =======  Second button to Open the Gripper ===================== 
 				else if(event == UserKeyEvent.SecondKeyDown ) 
 				{  
-					// ********
-
+					// ******** 
 					getGripperProcessData(); 
-					positionRequestEcho =  robotiqGripper.getPositionRequestEcho()+ step; 
-
+					positionRequestEcho =  robotiqGripper.getPositionRequestEcho()+ step;  
 					if (positionRequestEcho<minVal) {
 						positionRequest = minVal; 
 					} 
@@ -100,13 +88,10 @@ public class RobotiqGripperKeys extends RoboticsAPICyclicBackgroundTask {
 							robotiqGripper.moveToHex(positionRequest,speed,force);
 							robotiqGripper.waitForMoveEnd();
 						} 
-					}
-
-					// ********
-
+					} 
+					// ******** 
 					displayStr1 = robotiqGripper.getPosition().toString(); 
 					key.setText(UserKeyAlignment.Middle, displayStr1); 
-
 				} 
 			}
 		};
@@ -114,76 +99,45 @@ public class RobotiqGripperKeys extends RoboticsAPICyclicBackgroundTask {
 		IUserKeyListener releaseListener = new IUserKeyListener(){
 			@Override
 			public void onKeyEvent(IUserKey key, UserKeyEvent event) 
-			{ 
-
+			{  
 				if(event == UserKeyEvent.FirstKeyDown  ){  
 					//robotiqGripper.activate() ;
 					//robotiqGripper.waitForInitialization() ;
 					robotiqGripper.fullyOpen() ;
-					robotiqGripper.waitForfullyOpen();   
-					displayStr2 = "Open"; 
+ 					displayStr2 = "Open"; 
 					key.setText(UserKeyAlignment.Middle, displayStr2);  
 				}
 				else if(event == UserKeyEvent.SecondKeyDown  ){ 
 					robotiqGripper.fullyClose() ;
-					robotiqGripper.waitForfullyClosed(); 
-					displayStr2 = "Closed"; 
-					key.setText(UserKeyAlignment.Middle, displayStr2); 
-
-				} 
-				//value = "Released"; 
-
+ 					displayStr2 = "Closed"; 
+					key.setText(UserKeyAlignment.Middle, displayStr2);  
+				}  
 			}
-		};
-
+		}; 
 		// ===================================================================================================
-		// Gripper Double Keys 
+		// Gripper Control by Step Keys 
 		gripperDoubleKey = gripperKeyBar.addDoubleUserKey(0,gripperListener, false); 
 		gripperDoubleKey.setText(UserKeyAlignment.TopMiddle, "Open");
 		gripperDoubleKey.setText(UserKeyAlignment.Middle,"val");
-		gripperDoubleKey.setText(UserKeyAlignment.BottomMiddle, "Close");
-
-		// Step Double Keys 
-		acknowledgeDoubleKey = gripperKeyBar.addDoubleUserKey(2,releaseListener, false); 
-		acknowledgeDoubleKey.setText(UserKeyAlignment.TopMiddle, "FullOpen");
-		acknowledgeDoubleKey.setText(UserKeyAlignment.Middle,"--");
-		acknowledgeDoubleKey.setText(UserKeyAlignment.BottomMiddle, "FullClose");
-
-
-		// ===================================================================================================
-
-		gripperKeyBar.publish(); 
-
-	}
-
-	// *********************************************************************************************************
-	// *********************************************************************************************************
-	// *********************************************************************************************************
-	@Override
-	public void runCyclic() {
-
-		//acknowledgeDoubleKey.setText(UserKeyAlignment.Middle, String.valueOf(gripper).substring(1,5));
-	}  
-
-	// *********************************************************************************************************
-	// *********************************************************************************************************
-	// *********************************************************************************************************
+		gripperDoubleKey.setText(UserKeyAlignment.BottomMiddle, "Close"); 
+		// Gripper Fully open/close Control Keys 
+		releaseDoubleKey = gripperKeyBar.addDoubleUserKey(2,releaseListener, false); 
+		releaseDoubleKey.setText(UserKeyAlignment.TopMiddle, "FullOpen");
+		releaseDoubleKey.setText(UserKeyAlignment.Middle,"N");
+		releaseDoubleKey.setText(UserKeyAlignment.BottomMiddle, "FullClose"); 
+		// =================================================================================================== 
+		gripperKeyBar.publish();  
+	} 
+ 	// *********************************************************************************************************
+ 	@Override
+	public void runCyclic() { 
+	}   
+ 	// *********************************************************************************************************
 	private void getGripperProcessData() { 
 		// Update the Gripper process Data
 		this.step  = getApplicationData().getProcessData("gripperStep").getValue();  
 		this.speed = getApplicationData().getProcessData("gripperSpeed").getValue();  
 		this.force = getApplicationData().getProcessData("gripperForce").getValue();  
-	}  
-
-
-	// ******************************************
-
-
-
-
-
-	// ******************************************
-
+	}   
+	// ****************************************** 
 }
-
-
