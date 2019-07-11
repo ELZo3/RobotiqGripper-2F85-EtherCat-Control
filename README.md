@@ -3,7 +3,7 @@ Controlling the Robotiq 2-Finger Gripper 2F85 with Kuka LBR IIWA Via Java Progra
 
 Steps:<br/>
 0. Follow the gripper manual to wire the gripper. Then, connect your robot's X65 interface to the gripper's controller via an ethernet cable <br/>
-1 - Create an IOConfiguration.wvs file on sunrise then openit with WorkVisual.<br/>
+1 - Create an IOConfiguration.wvs file on sunrise then open it with WorkVisual.<br/>
 2 - Add the robotiq Gripper's EtherCat description File "Robotiq_AG_ECS_20181109.xml" or download it from:<br/>
 https://s3.amazonaws.com/com-robotiq-website-prod-assets/website-assets/support_documents/document/Robotiq_AG_ECS_20181109.xml <br/>
 3- Add the gripper's controller  "NIC 50-RE/ECS" to the KUKA Extension BUS (SYS-44) <br/>
