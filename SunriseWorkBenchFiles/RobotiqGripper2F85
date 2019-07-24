@@ -11,12 +11,12 @@ public class RobotiqGripper2F85 extends RobotiqGripperIOGroup {
 	public static final int gripperMinHexPosition = 4;    
 	public static final int maxSpeed = 255;
 	public static final int avgSpeed = 128;
-	public static final int lowSpeed = 32;
+	public static final int lowSpeed = 15;
 	public static final int minSpeed = 0;
 	public static final int maxForce = 255;
 	public static final int avgForce = 128;
 	public static final int lowForce = 32;
-	public static final int minForce = 0; 
+	public static final int minForce = 1; 
 	public static final int waitDelayMS = 50;
 	public static final int initDelayMS = 500;
 	//***************************************** 
@@ -31,22 +31,22 @@ public class RobotiqGripper2F85 extends RobotiqGripperIOGroup {
 	// 	___________________________________________________________________________
 	// | X | X | rAutoReleaseDirection | rAutoRelease  | rGoTo | x | x | rACTIVATE|
 	// |_X_|_X_|__________[5]___________|_____[4]______|__[3]__|___|___|__[0]_____|
- 
+
 	//   INPUT BYTE [0]: THE Gripper Status BYTE ACCORDING TO ROBOTIQ
 	// 	_________________________________________________________________________________ 
 	// | X | X | gObjDetectionSTATUS | gSTATUS  | gGoToEcho | x | x | gACTIVATION STATUS |
 	// |_X_|_X_|________[7][6]_______|_[5][4]___|____[3]____|___|___|________[0]_________|
- 
+
 	//************************************************************* 
 	// ************** High level functions  ***********************
 	//*************************************************************  
 	public void deactivate() {
-		this.setActionRequest(0); //"ActionRequest" byte <-- ‭0000 0000: rACT bit =  0
+		this.setActionRequest(0); //"ActionRequest" byte <-- â€­0000 0000: rACT bit =  0
 	} 
 	//************************************************** 
 	public void activate() {
 		System.out.println("Activating Gripper..."); 
-		this.setActionRequest(1);//"ActionRequest" byte <-- ‭‭0000 0001 : rACT bit = 1‬
+		this.setActionRequest(1);//"ActionRequest" byte <-- â€­â€­0000 0001 : rACT bit = 1â€¬
 	}
 	//************************************************** 
 	public int moveToCM(int width, int speed,int force) { 
@@ -106,11 +106,23 @@ public class RobotiqGripper2F85 extends RobotiqGripperIOGroup {
 	}
 	//************************************************** 
 	public void fullyClose()  { 
-		moveToCM( gripperMaxWidth, avgSpeed,lowForce); 
+		//moveToCM( gripperMaxWidth, lowSpeed,maxForce);  // Max force
+		moveToCM( gripperMaxWidth, lowSpeed,minForce);
+	} 
+	//************************************************** 
+	public void fullyClose( int speedIn255,int forceIn255)  {  
+		moveToCM( gripperMaxWidth, speedIn255,forceIn255);
+		//moveToCM( 85, maxSpeed 255,max force 255);
 	} 
 	//************************************************** 
 	public void fullyOpen() { 
-		moveToCM( gripperMinWidth, avgSpeed,lowForce); 
+		//moveToCM( gripperMinWidth, lowSpeed,maxForce); // Max force
+		moveToCM( gripperMinWidth, lowSpeed,minForce); 
+	} 
+	//**************************************************  
+	public void fullyOpen(int speedIn255,int forceIn255) { 
+		//moveToCM( gripperMinWidth, lowSpeed,maxForce); // Max force
+		moveToCM( gripperMinWidth, speedIn255,forceIn255); 
 	} 
 	//************************************************** 
 	// Wait for Gripper to finish initialization
@@ -119,7 +131,7 @@ public class RobotiqGripper2F85 extends RobotiqGripperIOGroup {
 		boolean activationInProgress = true; 
 		while(activationInProgress) 
 		{  
-			System.out.println("Gripper initializing..."); 
+			//System.out.println("Gripper initializing..."); 
 			char[] gripperStatusByte = this.getGripperStatusCharArray();  
 			if (gripperStatusByte[5] == '0' && gripperStatusByte[4] =='1') {
 				activationInProgress = true;
@@ -244,7 +256,7 @@ public class RobotiqGripper2F85 extends RobotiqGripperIOGroup {
 	}   
 	//************************************************** 
 	private void goToPosition() { 
-		this.setActionRequest(9); //"ActionRequest" byte <-- ‭0000 1001 : rACT bit = 1 && rGTO = 1
+		this.setActionRequest(9); //"ActionRequest" byte <-- â€­0000 1001 : rACT bit = 1 && rGTO = 1
 	}    
 	//************************************************** 
 	//  Basic byte control functions 
@@ -252,7 +264,7 @@ public class RobotiqGripper2F85 extends RobotiqGripperIOGroup {
 	public static int mapCentimetersToDecimalValue (int cm) {
 		if (cm <= gripperMaxWidth)  
 			return ( (int) Math.round ( ( (gripperMaxWidth- cm)*255 ) /gripperMaxWidth ) ) ;
-		 else  
+		else  
 			return -1;  
 	} 
 	//******************** 
